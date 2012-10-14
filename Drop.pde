@@ -8,7 +8,8 @@ class Drop {
   float aSpread = 0.6;
   float sizeDelta = 4;
   color dropColor = color(0);
-  
+  float dropAlpha = 0;
+
   Drop(float _px, float _py, float _sx, float _sy, float _vx, float _vy, float _ax, float _ay) {
 
     px = _px;
@@ -34,15 +35,20 @@ class Drop {
       s.y += sizeDelta;
       v.add(a);
       p.add(v);
-      if (p.y>yLimit) {
-        dead=true;
+      p.x += wind*(p.y/sH);
+      if(p.y>sH && dropAlpha != 0){
+          for (int k = 0 ; k<random(1,1) ; k++) {
+            splash.add(new Splash(p.x, sH));
+          }
       }
+      if (p.y>yLimit) dead=true;
     }
   }
 
   void render() {
     pushMatrix();
     translate(p.x, p.y);
+    rotate(radians((-1 * wind)*(p.y/sH)));
     noStroke();
     fill(dropColor);
     rectMode(CENTER);
