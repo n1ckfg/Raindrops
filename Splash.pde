@@ -9,7 +9,7 @@ class Splash {
         float yy = sin(angle)*distance;
         position = new PVector(x,y);
         speed = new PVector(xx,yy);
-        innerWind = wind/3;
+        innerWind = wind/10;
       }
 
     void draw() {
