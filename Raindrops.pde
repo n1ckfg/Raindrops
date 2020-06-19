@@ -17,12 +17,12 @@ boolean showImg = false;
 boolean dead = false;
 
 void setup() {
-  size(sW, sH, P3D);
+  size(50, 50, P3D);
+  surface.setSize(sW, sH);
   frameRate(fps);
   mapImg = loadImage("test.png");
   scaleImg = createImage(numColumns, numRows, RGB);
-  image(mapImg, 0, 0, numColumns, numRows);
-  scaleImg = get(0, 0, numColumns, numRows);
+  scaleImg = mapImg.get(0, 0, numColumns, numRows);
   background(bgColor);
   initRows();
 }
@@ -71,4 +71,3 @@ void pixelTrack() {
     }
   }
 }
-
